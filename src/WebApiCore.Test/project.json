@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "dotnet-test-xunit": "2.2.0-*",
+    "xunit": "2.2.0-*",
+    "WebApiCore.Core": "1.0.0-*",
+    "WebApiCore.Application": "1.0.0-*",
+    "WebApiCore.Repository": "1.0.0-*",
+    "MyTested.AspNetCore.Mvc.Universe": "1.0.0",
+    "WebApiCore": "1.0.0-*",
+    "NDaisy.Core": "1.0.0-*",
+    "Autofac": "4.2.0",
+    "Moq": "4.6.38-alpha",
+    "FluentAssertions": "4.17.0",
+    "WebApiCore.DomainModel": "1.0.0-*",
+    "DaisyCore": "5.0.0"
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": "dotnet5.4",
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.1",
+          "type": "platform"
+        }
+      }
+    }
+  },
+  "testRunner": "xunit",
+  "buildOptions": {
+    "warningsAsErrors": true,
+    "preserveCompilationContext": true,
+    "copyToOutput": {
+      "include": [
+        "appsettings.json"
+      ]
+    }
+  }
+}

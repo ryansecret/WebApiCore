@@ -1,0 +1,2 @@
+﻿1.添加Authentication
+1.AddDistributedMemoryCache

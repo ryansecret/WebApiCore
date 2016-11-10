@@ -1,0 +1,10 @@
+﻿Log
+bin
+obj
+*.user
+*.suo
+*.orig 
+
+.vs
+packages
+ 

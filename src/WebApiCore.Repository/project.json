@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "DaisyDapperEx": "5.0.0",
+    "Dapper": "1.50.2",
+    "MySql.Data": "7.0.6-IR31",
+    "NETStandard.Library": "1.6.1-preview1-24530-04",
+    "WebApiCore.Core": "1.0.0-*",
+    "WebApiCore.DomainModel": "1.0.0-*"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "buildOptions": {
+        "define": [ "ASYNC", "COREFX" ]
+      },
+      "dependencies": {
+      }
+    }
+  }
+}

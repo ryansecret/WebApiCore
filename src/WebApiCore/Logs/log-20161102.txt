@@ -1,0 +1,43 @@
+2016-11-02T09:38:32.2231023+08:00 0HL02O3Q5DIAM [INF] 更新餐厅，数据为{"RestaurantId":0,"RestaurantName":"ryantest111","RestaurantPhone":null,"CreateDate":null,"SubName":null,"Address":null,"ProvinceName":null,"CityName":null,"RegionName":null,"Id":0,"ValidationState":{"Errors":[],"IsValid":true}} (b4206982)
+2016-11-02T09:40:01.6924431+08:00 0HL02O4KQIQ5C [INF] 更新餐厅，数据为{"RestaurantId":0,"RestaurantName":"ryantest111","RestaurantPhone":null,"CreateDate":null,"SubName":null,"Address":null,"ProvinceName":null,"CityName":null,"RegionName":null,"Id":0,"ValidationState":{"Errors":[],"IsValid":true}} (b4206982)
+2016-11-02T09:41:08.3124055+08:00 0HL02O58LRFAO [INF] 更新餐厅，数据为{"RestaurantId":0,"RestaurantName":"ryantest111","RestaurantPhone":null,"CreateDate":null,"SubName":null,"Address":null,"ProvinceName":null,"CityName":null,"RegionName":null,"Id":0,"ValidationState":{"Errors":[],"IsValid":true}} (b4206982)
+2016-11-02T09:41:26.1445179+08:00 0HL02O58LRFAP [INF] 更新餐厅，数据为{"RestaurantId":0,"RestaurantName":"ryantest111","RestaurantPhone":null,"CreateDate":null,"SubName":null,"Address":null,"ProvinceName":null,"CityName":null,"RegionName":null,"Id":0,"ValidationState":{"Errors":[],"IsValid":true}} (b4206982)
+2016-11-02T09:43:02.3920151+08:00 0HL02O6ALPQ0O [INF] 添加餐厅，数据为{"RestaurantId":12333,"RestaurantName":"ryantest111","RestaurantPhone":null,"CreateDate":null,"SubName":null,"Address":null,"ProvinceName":null,"CityName":null,"RegionName":null,"Id":0,"ValidationState":{"Errors":[],"IsValid":true}} (1b31cff8)
+2016-11-02T09:45:49.5110900+08:00 0HL02O7SFN8Q7 [INF] 更新餐厅，数据为{"RestaurantId":12333,"RestaurantName":"ryantest11121","RestaurantPhone":null,"CreateDate":null,"SubName":null,"Address":null,"ProvinceName":null,"CityName":null,"RegionName":null,"Id":0,"ValidationState":{"Errors":[],"IsValid":true}} (83b287fc)
+2016-11-02T09:46:31.6918049+08:00 0HL02O7SFN8Q8 [INF] 更新餐厅，数据为{"RestaurantId":12333,"RestaurantName":"ryantest11121","RestaurantPhone":null,"CreateDate":null,"SubName":null,"Address":null,"ProvinceName":null,"CityName":null,"RegionName":null,"Id":0,"ValidationState":{"Errors":[],"IsValid":true}} (83b287fc)
+2016-11-02T13:23:13.2310545+08:00 0HL02S1BQ8VNH [INF] 更新餐厅，数据为{"RestaurantId":12333,"RestaurantName":"ryantest11121","RestaurantPhone":null,"CreateDate":null,"SubName":null,"Address":null,"ProvinceName":null,"CityName":null,"RegionName":null,"Id":0,"ValidationState":{"Errors":[],"IsValid":true}} (83b287fc)
+2016-11-02T14:24:08.5239980+08:00 0HL02T3D5RI4C [ERR] Connection id ""0HL02SUTATLER"": An unhandled exception was thrown by the application. (8c14976b)
+MySql.Data.MySqlClient.MySqlException: Table 'oper_support.ballentity' doesn't exist
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior)
+   at Dapper.SqlMapper.<QueryImpl>d__124`1.MoveNext()
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at DapperEx.DapperImplementor.Insert[T](IDbConnection connection, T entity, IDbTransaction transaction, Nullable`1 commandTimeout) in G:\个人\DapperEx\DapperExCore\DapperImplementor.cs:line 99
+   at DapperEx.Database.Insert[T](T entity, Nullable`1 commandTimeout) in G:\个人\DapperEx\DapperExCore\Database.cs:line 172
+   at WebApiCore.Repository.Repository.RepositoryBase`2.Add(T item) in G:\.net core open source\WebApiCore\src\WebApiCore.Repository\Repository\RepositoryBase.cs:line 12
+   at WebApiCore.Application.Application.BallApplication.Save(Ball ball) in G:\.net core open source\WebApiCore\WebApiCore.Application\Application\BallApplication.cs:line 36
+   at WebApiCore.Controllers.ValuesController.Save() in G:\.net core open source\WebApiCore\src\WebApiCore\Controllers\ValuesController.cs:line 34
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionFilterAsync>d__28.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Server.IISIntegration.IISMiddleware.<Invoke>d__8.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Hosting.Internal.RequestServicesContainerMiddleware.<Invoke>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Server.Kestrel.Internal.Http.Frame`1.<RequestProcessingAsync>d__2.MoveNext()
