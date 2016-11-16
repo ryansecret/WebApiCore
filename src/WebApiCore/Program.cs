@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 
 namespace WebApiCore
 {
@@ -12,7 +13,12 @@ namespace WebApiCore
     {
         public static void Main(string[] args)
         {
-            var host = new WebHostBuilder()
+            var config = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("hosting.json", optional: true)
+               .Build();
+            var host = new WebHostBuilder().
+                 UseConfiguration(config)
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()

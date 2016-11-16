@@ -3,7 +3,6 @@
 
   "dependencies": {
     "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
-    "NDaisy.Core": "1.0.0-*",
     "Newtonsoft.Json": "9.0.2-beta1",
     "Moq": "4.6.38-alpha",
     "Autofac": "4.2.0",

@@ -9,7 +9,6 @@
     "WebApiCore.Repository": "1.0.0-*",
     "MyTested.AspNetCore.Mvc.Universe": "1.0.0",
     "WebApiCore": "1.0.0-*",
-    "NDaisy.Core": "1.0.0-*",
     "Autofac": "4.2.0",
     "Moq": "4.6.38-alpha",
     "FluentAssertions": "4.17.0",
