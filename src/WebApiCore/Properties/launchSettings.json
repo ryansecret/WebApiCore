@@ -19,7 +19,7 @@
     "WebApiCore": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5000/api/values",
+      "launchUrl": "http://localhost:6008/api/values/get",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

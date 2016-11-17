@@ -1,2 +1,3 @@
-﻿1.添加Authentication
-1.AddDistributedMemoryCache
+﻿1. 添加Authentication jwt
+2. AddDistributedCache
+3. 

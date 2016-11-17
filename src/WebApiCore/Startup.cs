@@ -33,6 +33,7 @@ namespace WebApiCore
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+            
         }
         
         public IConfigurationRoot Configuration { get; }
@@ -43,8 +44,11 @@ namespace WebApiCore
         {
             services.AddMvc();
             services.AddSingleton<IConfigurationRoot>(Configuration);
-
-         
+            var redis = Configuration.GetSection("Redis");
+            services.AddDistributedRedisCache(option=> {
+                option.Configuration = redis.GetValue<string>("configuration");
+                option.InstanceName = redis.GetValue<string>("instance"); ;
+            });
             var containerBuilder = new ContainerBuilder();
               
             containerBuilder.Populate(services);
