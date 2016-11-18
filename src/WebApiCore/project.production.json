@@ -24,11 +24,11 @@
     "Serilog.Formatting.Compact": "1.0.1-dev-00922",
     "Serilog.Sinks.RollingFile": "3.2.0",
     "Microsoft.Extensions.Caching.Redis": "1.1.0",
-    "Microsoft.IdentityModel.Tokens": "5.1.0",
     "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0"
   },
 
   "tools": {
+  
   },
 
   "frameworks": {
@@ -58,7 +58,9 @@
   },
 
   "scripts": {
-    "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+    "postpublish": [
+      "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"
+    ]
   },
   "userSecretsId": "aspnet-WebApiCore-20161115074138"
 }
