@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
@@ -11,6 +13,7 @@ using WebApiCore.Application.Models.Ball;
 
 namespace WebApiCore.Controllers
 {
+    [AllowAnonymous]
     public class ValuesController : BaseController
     {
         private readonly BallApplication _ballApplication;
@@ -19,7 +22,7 @@ namespace WebApiCore.Controllers
         {
             _ballApplication = ballApplication;
         }
-
+        
         // GET api/values
         [HttpGet]
         

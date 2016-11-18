@@ -25,7 +25,10 @@
     "Serilog.Sinks.RollingFile": "3.2.0",
     "Microsoft.Extensions.Caching.Redis": "1.1.0",
     "Microsoft.IdentityModel.Tokens": "5.1.0",
-    "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0"
+    "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0",
+    "Microsoft.AspNetCore.Http.Abstractions": "1.2.0-preview1-22778",
+    "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-final",
+    "Microsoft.AspNetCore.Hosting.Abstractions": "1.1.0"
   },
 
   "tools": {

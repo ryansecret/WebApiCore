@@ -28,16 +28,18 @@ namespace WebApiCore
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+            HostingEnvironment = env;
         }
 
-        public IConfigurationRoot Configuration { get; }
-
-        public IContainer Container { get; private set; }
+          IConfigurationRoot Configuration { get; }
+          IHostingEnvironment HostingEnvironment { get; }
+          IContainer Container { get; set; }
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
             services.AddSingleton(Configuration);
+            services.AddSingleton(HostingEnvironment);
             var redis = Configuration.GetSection("Redis");
             services.AddDistributedRedisCache(option =>
             {
@@ -70,9 +72,13 @@ namespace WebApiCore
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddFile(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
-            app.UseMiddleware<LogMiddlerware>();
+ 
             app.UseJwtBearerAuthentication(Jwt.GetJwtOptions());
+            app.UseCors(p =>
+            {
+                p.WithOrigins("");
+            });
+             
             app.Map("/auth/test", appbuilder =>
             {
                 appbuilder.Run(d =>
@@ -82,6 +88,7 @@ namespace WebApiCore
                     return d.Response.WriteAsync(token);
                 });
             });
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

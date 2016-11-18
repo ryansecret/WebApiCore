@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNet.Hosting;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using NDaisy.Core.ServiceLocator;
+using WebApiCore.Core.Utility.Extension;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace WebApiCore.Utility
 {
@@ -33,8 +41,26 @@ namespace WebApiCore.Utility
                     ValidIssuer = Issue,
                     IssuerSigningKey = _signKey,
                     ValidateLifetime = true,
-                    ValidateIssuer = true
-                }
+                    ValidateIssuer = true,
+                    ValidateAudience = false
+                },
+                  Events = new JwtBearerEvents()
+                  {
+                      OnAuthenticationFailed = c =>
+                      {
+                          
+                          return Task.Run(() =>
+                          {
+                              if (ServiceLocator.Current.GetInstance<IHostingEnvironment>().IsDevelopment())
+                              {
+                                  c.Request.GetDisplayUrl().LogInfo();
+                                  c.Exception.LogError();
+                              }
+
+                          } );
+                      }
+                   
+                  }
             };
         }
 
@@ -42,7 +68,7 @@ namespace WebApiCore.Utility
         {
             var seconds= _config.GetValue<int>("SlideTime");
              
-            JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(issuer: Issue, claims: claims, expires: DateTime.UtcNow.AddSeconds(seconds), signingCredentials: new SigningCredentials(_signKey, SecurityAlgorithms.HmacSha256));
+            JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(issuer: Issue, claims: claims, expires: DateTime.UtcNow.AddHours(24), signingCredentials: new SigningCredentials(_signKey, SecurityAlgorithms.HmacSha256));
              
             return new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
         }
