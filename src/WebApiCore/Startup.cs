@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Security.Claims;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
@@ -10,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NDaisy.Core.ServiceLocator;
+using Swashbuckle.Swagger.Model;
 using WebApiCore.Controllers;
 using WebApiCore.Core;
 using WebApiCore.Core.Utility;
@@ -28,6 +31,7 @@ namespace WebApiCore
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+          
             HostingEnvironment = env;
         }
 
@@ -40,6 +44,21 @@ namespace WebApiCore
             services.AddMvc();
             services.AddSingleton(Configuration);
             services.AddSingleton(HostingEnvironment);
+            services.AddSwaggerGen();
+            services.ConfigureSwaggerGen(options =>
+            {
+                options.SingleApiVersion(new Info
+                {
+                    Version = "v1",
+                    Title = "ryan API",
+                    Description = "A simple api",
+                    TermsOfService = "None"
+                });
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, Assembly.GetEntryAssembly().GetName().Name+".xml"));
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, Assembly.GetEntryAssembly().GetName().Name + ".Application.xml"));
+                options.DescribeAllEnumsAsStrings();
+            });
+            
             var redis = Configuration.GetSection("Redis");
             services.AddDistributedRedisCache(option =>
             {
@@ -95,7 +114,11 @@ namespace WebApiCore
                     "default",
                     "api/{controller=Values}/{action=Hello}/{id?}");
             });
-             
+            if (HostingEnvironment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUi();
+            }
             // appLifetime?.ApplicationStopped.Register(() => this.Container.Dispose());
         }
     }

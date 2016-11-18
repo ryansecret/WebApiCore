@@ -1,16 +1,17 @@
 {
   "version": "1.0.0-*",
-
   "dependencies": {
     "AutoMapper": "5.1.1",
     "NETStandard.Library": "1.6.1-preview1-24530-04",
     "WebApiCore.DomainModel": "1.0.0-*",
     "WebApiCore.Repository": "1.0.0-*"
   },
-
   "frameworks": {
     "netstandard1.6": {
       "imports": "dnxcore50"
     }
+  },
+  "buildOptions": {
+    "xmlDoc": true
   }
 }
