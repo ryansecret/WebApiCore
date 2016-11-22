@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NDaisy.Core.ServiceLocator;
 using Swashbuckle.Swagger.Model;
+using Swashbuckle.SwaggerGen.Generator;
 using WebApiCore.Controllers;
 using WebApiCore.Core;
 using WebApiCore.Core.Utility;
@@ -47,13 +48,14 @@ namespace WebApiCore
             services.AddSwaggerGen();
             services.ConfigureSwaggerGen(options =>
             {
-                options.SingleApiVersion(new Info
-                {
-                    Version = "v1",
-                    Title = "ryan API",
-                    Description = "A simple api",
-                    TermsOfService = "None"
-                });
+               
+                options.SwaggerDoc("v1",
+                  new Info
+                  {
+                      Version = "v1",
+                      Title = "ryan API",
+                  }
+              );
                 options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, Assembly.GetEntryAssembly().GetName().Name+".xml"));
                 options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, Assembly.GetEntryAssembly().GetName().Name + ".Application.xml"));
                 options.DescribeAllEnumsAsStrings();
@@ -117,7 +119,7 @@ namespace WebApiCore
             if (HostingEnvironment.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUi();
+                app.UseSwaggerUi(c=>c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1 Docs"));
             }
             // appLifetime?.ApplicationStopped.Register(() => this.Container.Dispose());
         }

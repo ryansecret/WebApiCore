@@ -29,8 +29,8 @@
     "Microsoft.AspNetCore.Http.Abstractions": "1.2.0-preview1-22778",
     "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-final",
     "Microsoft.AspNetCore.Hosting.Abstractions": "1.1.0",
-    "Swashbuckle.SwaggerGen": "6.0.0-beta901",
-    "Swashbuckle.SwaggerUi": "6.0.0-beta901"
+    "SwaggerGenerator": "1.1.0",
+    "SwaggerUi": "1.1.0"
   },
 
   "tools": {

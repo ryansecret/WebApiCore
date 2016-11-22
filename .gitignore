@@ -8,4 +8,4 @@ obj
 .vs
 packages
  
-/src/WebApiCore/Logs
+Logs

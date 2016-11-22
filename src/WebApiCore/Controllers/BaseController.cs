@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApiCore.Controllers
 {
-    [Authorize]
+    [Produces("application/json")]
     public class BaseController : Controller
     {
     }

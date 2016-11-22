@@ -7,6 +7,9 @@ using WebApiCore.Application.Models;
 using WebApiCore.Application.Models.Ball;
 using WebApiCore.DomainModel.WebApiCore;
 
+/// <summary>
+/// The Application namespace.
+/// </summary>
 namespace WebApiCore.Application.Application
 {
     public class BallApplication
