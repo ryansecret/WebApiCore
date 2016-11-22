@@ -8,6 +8,7 @@
     "System.Collections": "4.3.0-preview1-24530-04",
     "System.Collections.Concurrent": "4.3.0-preview1-24530-04",
     "System.Collections.NonGeneric": "4.3.0-preview1-24530-04",
+    "System.ComponentModel.Annotations": "4.3.0",
     "System.Data.SqlClient": "4.3.0-preview1-24530-04",
     "System.Dynamic.Runtime": "4.3.0-preview1-24530-04",
     "System.Linq": "4.3.0-preview1-24530-04",

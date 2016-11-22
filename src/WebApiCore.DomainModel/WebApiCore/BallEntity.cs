@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using FluentValidation;
+using FluentValidation.Validators;
 
 namespace WebApiCore.DomainModel.WebApiCore
 {
@@ -22,8 +24,8 @@ namespace WebApiCore.DomainModel.WebApiCore
         public string Name { get; private set; }
 
         public string Color { get; private set; }
-
-
+        [MaxLength(50)]
+        public string Country { get; private set; }
         protected override IValidator GetValidator()
         {
              return new BallValidator();
