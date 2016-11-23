@@ -3,22 +3,17 @@
 namespace WebApiCore.Application.Models
 {
     /// <summary>
-    /// 返回对象,客户端契约
+    ///  
     /// </summary>
     public class Result
     {
         /// <summary>
         /// 成功
         /// </summary>
-        public const int Success =200;
-        /// <summary>
-        /// 错误
-        /// </summary>
-        public const int ServerError = 500;
-        /// <summary>
-        /// 未授权
-        /// </summary>
-        public const int NoAutherize = 401;
+        public const int Success =1;
+
+        //
+        public const int Falure = 0;
         /// <summary>
         /// 构造bb函数
         /// </summary>
@@ -36,8 +31,10 @@ namespace WebApiCore.Application.Models
             this.ResultStatus = status;
             this.Message = message;
         }
-       
-       
+
+        /// <summary>
+        /// The result status
+        /// </summary>
         public int ResultStatus;
         /// <summary>
         /// 返回的消息 
