@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using MyTested.AspNetCore.Mvc;
+using WebApiCore.Application.Models;
+using WebApiCore.Application.Models.Ball;
 using WebApiCore.Controllers;
 using Xunit;
 
@@ -15,22 +18,22 @@ namespace WebApiCore.Test.Controller
         [Fact]
         public void GetValues()
         {
-            MyMvc.Controller<ValuesController>()
-                .Calling(d => d.Get())
+            MyMvc.Controller<ShowController>()
+                .Calling(d => d.HelloAsync())
                 .ShouldReturn()
-                .ResultOfType<IEnumerable<string>>()
-                .Passing(d=>d.Any());
+                .ResultOfType<OutputWithData<string>>().Passing(d=>d.ResultStatus==1);
+
 
         }
         [Fact]
         public void Saves()
         {
 
-            MyMvc.Controller<ValuesController>().WithServices()
-                .Calling(d => d.Save())
+            MyMvc.Controller<ShowController>().WithServices()
+                .Calling(d => d.SaveBall(new Ball()))
                 .ShouldReturn()
-                .ResultOfType<bool>()
-                .Passing(d => d);
+                .ResultOfType<OutputWithData<bool>>().Passing(d=>!d.DataBody);
+
         }
     }
 }

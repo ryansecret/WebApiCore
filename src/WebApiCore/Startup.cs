@@ -92,7 +92,7 @@ namespace WebApiCore
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddFile(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
- 
+  
             app.UseJwtBearerAuthentication(Jwt.GetJwtOptions());
             app.UseCors(p =>
             {

@@ -61,7 +61,7 @@ namespace WebApiCore.Application.Models
         /// <param name="status"></param>
         /// <param name="dataBody"></param>
         /// <param name="message"></param>
-        public OutputWithData( T dataBody, String message = "", int status =200)
+        public OutputWithData( T dataBody, String message = "", int status =1)
             : base(status, message)
         {
             this.DataBody = dataBody;

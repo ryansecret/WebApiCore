@@ -68,7 +68,7 @@ namespace WebApiCore.Utility
         {
             var seconds= _config.GetValue<int>("SlideTime");
              
-            JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(issuer: Issue, claims: claims, expires: DateTime.UtcNow.AddHours(24), signingCredentials: new SigningCredentials(_signKey, SecurityAlgorithms.HmacSha256));
+            JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(issuer: Issue, claims: claims, expires: DateTime.UtcNow.AddSeconds(seconds), signingCredentials: new SigningCredentials(_signKey, SecurityAlgorithms.HmacSha256));
              
             return new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
         }
