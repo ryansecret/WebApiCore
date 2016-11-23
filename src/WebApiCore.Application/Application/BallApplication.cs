@@ -20,31 +20,31 @@ namespace WebApiCore.Application.Application
             _ballRepository = ballRepository;
         }
 
-        public ResultWithData<string> SayHello(Ball ball)
+        public OutputWithData<string> SayHello(Ball ball)
         {
             var ballEntity = Mapper.Map<Ball, BallEntity>(ball);
             if (ballEntity.IsValid())
             {
-                return new ResultWithData<string>(_ballRepository.Hello());
+                return new OutputWithData<string>(_ballRepository.Hello());
             }
 
             return GetError<string>(ballEntity);
         }
 
-        public ResultWithData<bool> Save(Ball ball)
+        public OutputWithData<bool> Save(Ball ball)
         {
             var ballEntity = Mapper.Map<Ball, BallEntity>(ball);
             if (ballEntity.IsValid())
             {
-                return new ResultWithData<bool>(_ballRepository.Add(ballEntity));
+                return new OutputWithData<bool>(_ballRepository.Add(ballEntity));
             }
             return GetError<bool>(ballEntity);
         }
 
-        ResultWithData<T> GetError<T>(BallEntity entity)
+        OutputWithData<T> GetError<T>(BallEntity entity)
         {
             var error = entity.ValidationState.Errors.First();
-            return new ResultWithData<T>(default(T),error.ErrorMessage,int.Parse(error.ErrorCode));
+            return new OutputWithData<T>(default(T),error.ErrorMessage,int.Parse(error.ErrorCode));
         }
  
     }

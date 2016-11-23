@@ -78,7 +78,6 @@ namespace WebApiCore
 
             containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterModule<AutofacModule>();
-            containerBuilder.RegisterType<ValuesController>();
             containerBuilder.Update(Container);
 
             var workEngin = new WebApiCoreWorkEngine(Container);

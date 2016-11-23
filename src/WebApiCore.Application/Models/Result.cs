@@ -5,7 +5,7 @@ namespace WebApiCore.Application.Models
     /// <summary>
     ///  
     /// </summary>
-    public class Result
+    public class Output
     {
         /// <summary>
         /// 成功
@@ -17,7 +17,7 @@ namespace WebApiCore.Application.Models
         /// <summary>
         /// 构造bb函数
         /// </summary>
-        public Result()
+        public Output()
         {
 
         }
@@ -26,7 +26,7 @@ namespace WebApiCore.Application.Models
         /// </summary>
         /// <param name="status"></param>
         /// <param name="message"></param>
-        public Result(int status, String message = "")
+        public Output(int status, String message = "")
         {
             this.ResultStatus = status;
             this.Message = message;
@@ -46,12 +46,12 @@ namespace WebApiCore.Application.Models
     /// 返回对象
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ResultWithData<T> : Result
+    public class OutputWithData<T> : Output
     {
         /// <summary> 
         /// 
         /// </summary>
-        public ResultWithData()
+        public OutputWithData()
         {
 
         }
@@ -61,7 +61,7 @@ namespace WebApiCore.Application.Models
         /// <param name="status"></param>
         /// <param name="dataBody"></param>
         /// <param name="message"></param>
-        public ResultWithData( T dataBody, String message = "", int status =200)
+        public OutputWithData( T dataBody, String message = "", int status =200)
             : base(status, message)
         {
             this.DataBody = dataBody;
