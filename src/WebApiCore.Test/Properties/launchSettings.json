@@ -1,5 +1,9 @@
 {
   "profiles": {
-    "newProfile1": {}
+    "newProfile1": {
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "test"
+      }
+    }
   }
 }
