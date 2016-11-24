@@ -120,7 +120,7 @@ namespace WebApiCore
             });
             if (HostingEnvironment.IsDevelopment())
             {
-               // loggerFactory.AddDebug();
+                loggerFactory.AddDebug();
                 app.UseSwagger();
                 app.UseSwaggerUi(c=>c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1 Docs"));
             }
