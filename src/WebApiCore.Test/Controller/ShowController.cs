@@ -9,12 +9,9 @@ using Xunit;
 
 namespace WebApiCore.Test.Controller
 {
-    public class ValuesControllerTest
+    public class ShowControllerTest
     {
-        public ValuesControllerTest()
-        {
-            
-        }
+      
         [Fact]
         public void GetValues()
         {

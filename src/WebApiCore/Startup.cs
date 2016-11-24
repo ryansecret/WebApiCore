@@ -91,7 +91,7 @@ namespace WebApiCore
             
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddFile(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            
             if (!HostingEnvironment.IsEnvironment("test"))
             {
                 app.UseJwtBearerAuthentication(Jwt.GetJwtOptions());
@@ -101,7 +101,7 @@ namespace WebApiCore
             {
                 p.WithOrigins("");
             });
-             
+             //todo:实际项目中，放在登录授权里面
             app.Map("/auth/test", appbuilder =>
             {
                 appbuilder.Run(d =>
@@ -120,6 +120,7 @@ namespace WebApiCore
             });
             if (HostingEnvironment.IsDevelopment())
             {
+               // loggerFactory.AddDebug();
                 app.UseSwagger();
                 app.UseSwaggerUi(c=>c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1 Docs"));
             }
